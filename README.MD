@@ -1,81 +1,95 @@
-<div align="center">
 
-  <img src="./.github/assets/blue-saiyan-bg.png" alt="Logo" height="200">
-  <h1 align="center"><strong>NODE BOILERPLATE - BLUE EDITION</strong></h1>
-  <p align="center">
-	  Don't start a new Node project from zero!<br> Use this simple <b>Nodejs</b> boilerplate with pre-configured <b>Typescript</b> in a modern way.
-  </p>
+# F1 Minimal API
 
-</div>
+![F1 API Cover](./assets/f1-api-cover.png)
 
-<br />
+A minimal API built with **Node.js** and the **Fastify** framework, based on [Felipe Aguiar's boilerplate](https://github.com/felipeAguiarCode/node-blue-boilerplate) for TypeScript projects. This API provides information about Formula 1 teams and drivers.
 
-  <!-- Badges -->
-<div align="center">
-  
-  [![TypeScript version][ts-badge]][typescript-5-4]
-  [![Node.js version][nodejs-badge]][nodejs]
+## Features
 
-</div>
+- Retrieve a list of Formula 1 teams
+- Retrieve a list of Formula 1 drivers
+- Retrieve details of a specific driver by ID
 
-# 🚀 Technologies
+## Endpoints
 
-This code source was developed with the following items:
+### GET `/teams`
+Returns the list of all Formula 1 teams.
 
-### 📦 Dependencies
-
-- [typescript][typescript-npm] - Superset for application scale JavaScript development
-- [tsx][tsx-npm] - TypeScript Execute (tsx): Enable Node.js to run TypeScript
-- [tsup][tsup-npm] - Bundle your TypeScript library with no config, powered by esbuild
-- [@types/node][@types/node-npm] - type definitions for node
-
-### 📄 Files
-
-- `.gitignore` - Ignore folders like node_modules
-- `.env` - Enviroment variables
-- `tsconfig.json` - Typescript configure Options
-
-### ⚡ Scripts
-
-- `npm run dist`: Compiles TypeScript files to JavaScript in the dist directory.
-- `npm run start:dev`: Runs the server in development mode with environment variables loaded from the .env file.
-- `npm run start:watch`: Runs the server in development mode with support for automatic reload on file changes.
-- `npm run start:dist`: Compiles the project and runs the compiled version from the dist directory.
-
-# 👨‍💻 How To Use
-
-click in **[Use this template]** OR
-
-To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js v20+](https://nodejs.org/en/) + [NPM v10+](https://nodejs.org/en/) installed on your computer. From your command line:
-
-```bash
-# Clone this repository
-$ git clone https://github.com/felipeAguiarCode/node-blue-boilerplate
-
-# Go into the repository
-$ cd node-blue-boilerplate
-
-# Install dependencies
-$ npm install
+**Response:**  
+```json
+[
+  { "id": 1, "name": "Ferrari", "base": "Italy" },
+  { "id": 2, "name": "Mercedes", "base": "United Kingdom" }
+]
 ```
 
-## Author
+### GET `/drivers`
+Returns the list of all Formula 1 drivers.
 
-| [<img src="https://avatars3.githubusercontent.com/u/37452836?s=96&v=4"><br><sub>Felipe Aguiar</sub>](https://github.com/felipeAguiarCode) |
-| :---------------------------------------------------------------------------------------------------------------------------------------: |
-|                                            [Linkedin](www.linkedin.com/in/felipe-aguiar-exe/)                                             |
+**Response:**  
+```json
+[
+  { "id": 1, "name": "Max Verstappen", "country": "Netherlands" },
+  { "id": 2, "name": "Lewis Hamilton", "country": "United Kingdom" }
+]
+```
 
-# Credits
+### GET `/drivers/:id`
+Returns details of a specific driver by ID.
 
-icons by [Pino Lamanna][dribble-icon]
+**Request Example:**  
+`GET /drivers/1`
 
-[typescript]: https://www.typescriptlang.org/
-[typescript-5-4]: https://www.typescriptlang.org/
-[ts-badge]: https://img.shields.io/badge/TypeScript-5.4-blue.svg
-[nodejs-badge]: https://img.shields.io/badge/Node.js->=%2020.00-blue.svg
-[nodejs]: https://nodejs.org/
-[dribble-icon]: https://dribbble.com/Schakalwal
-[typescript-npm]: https://www.npmjs.com/package/typescript
-[tsx-npm]: https://www.npmjs.com/package/tsx
-[tsup-npm]: https://www.npmjs.com/package/tsup
-[@types/node-npm]: https://www.npmjs.com/package/@types/node
+**Response:**  
+```json
+{ "id": 1, "name": "Max Verstappen", "country": "Netherlands" }
+```
+
+If the driver is not found, the response is:
+```json
+null
+```
+
+## How to Run Locally
+
+### Prerequisites
+- Node.js installed (recommended version: 18+)
+- npm or yarn installed
+
+### Steps
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/f1-api.git
+   cd f1-api
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   # or if using yarn:
+   yarn install
+   ```
+
+3. **Run the server:**
+   ```bash
+   node index.js
+   ```
+
+4. **Access the server:**  
+   The server will be available at `http://localhost:3366`.
+
+## Technologies Used
+
+- **Node.js**: Runtime environment for JavaScript on the server.
+- **Fastify**: Fast and low-overhead web framework for Node.js.
+- **TypeScript**: Adds static typing to JavaScript (recommended for scaling the project).
+
+## License
+
+This project is licensed under the **ISC License**.
+
+## Acknowledgments
+
+- Built using Felipe Aguiar's TypeScript boilerplate as a foundation.
